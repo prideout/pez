@@ -39,7 +39,7 @@ Pez never makes any OpenGL calls (that's up to you), but it provides a few helpe
 
 Take a look at [glsw](http://prideout.net/blog/?p=11) to see how the above functions work.  pez also makes it easy to create vertex buffer objects from blobs of data:
 
-    PezVerts **pezLoadVerts**(const char* filename)
+    PezVerts pezLoadVerts(const char* filename)
     PezVerts pezGenQuad(float left, float top, float right, float bottom)
     void pezFreeVerts(PezVerts verts)
     void pezSaveVerts(PezVerts verts, const char* filename)
