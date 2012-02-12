@@ -24,9 +24,9 @@ void pezFatal(const char* pStr, ...) |
 void pezCheck(int condition, ...)    |
 void pezPrintString(const char* pStr, ...) |
 
-Note that your job is to implement functions that are prefixed with a capital `Pez`, whereas functions that prefixed with a lowercase `pez` are alrady implemented for you.
+Note that your job is to implement functions that are prefixed with a capital `Pez`, whereas functions that prefixed with a lowercase `pez` are already implemented for you.
 
-Pez implements some OS-specific stuff for you:
+Pez provides some OS-specific functions for you:
 
     const char* pezOpenFileDialog()
     const char* pezGetDesktopFolder()
@@ -37,11 +37,9 @@ Pez never makes any OpenGL calls (that's up to you), but it provides a few helpe
     const char* pezGetShader(const char* effectKey)
     int pezAddDirective(const char* token, const char* directive)
 
-Take a look at [glsw](http://prideout.net/blog/?p=11) to see how the effect key maps to a filename.
+Take a look at [glsw](http://prideout.net/blog/?p=11) to see how the above functions work.  pez also makes it easy to create vertex buffer objects from blobs of data:
 
-And, pez provides some functions to make it easy to create vertex buffer objects:
-
-    PezVerts pezLoadVerts(const char* filename)
+    PezVerts **pezLoadVerts**(const char* filename)
     PezVerts pezGenQuad(float left, float top, float right, float bottom)
     void pezFreeVerts(PezVerts verts)
     void pezSaveVerts(PezVerts verts, const char* filename)
