@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>OpenGL Demo</title>
+    <style type="text/css"> 
+.codebox {
+    background-color:#eee;
+    border-color:#ccc;
+    border-style:solid;
+    border-width:1px;
+    padding:7px;
+    width: 800px;
+}   </style>
+  </head>
+
+  <body>
+
+    <h2>How To Build</h2>
+
+<p>
+If you're using Windows, simply open the <tt>vcxproj</tt> file in this folder.
+</p>
+
+For Linux/X11, you'll need to use the supplied WAF script.  If you don't have WAF, you can download it from Google Code.  Or, you can type this into a python script:
+
+<pre class="codebox">
+import urllib
+import os
+import stat
+urllib.urlretrieve("http://waf.googlecode.com/files/waf-1.6.2", "waf")
+os.chmod('waf', stat.S_IEXEC)
+</pre> 
+
+Next, type this:
+
+<pre class="codebox">
+$ ./waf configure build run
+</pre>
+
+</body>
+</html>

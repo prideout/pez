@@ -1,0 +1,28 @@
+#! /usr/bin/env python
+
+import sys
+
+def build(gc):
+
+    glob = gc.path.ant_glob
+    ignores = 'toFloat.cpp minigzip.c b44ExpLogTable.cpp eLut.cpp'
+    files = glob(incl = ['**/*.c*' ], excl = ['**/' + x for x in ignores.split(' ')])
+        
+    dirs = glob(dir = True, src = False, excl = '.hg')
+    dirs.append(gc.path.make_node('../build'))
+    
+    tableMaker = 'g++ ${SRC} -o ${TGT} -Xlinker --enable-auto-import'
+    gc(rule = tableMaker, source = 'openexr/Half/toFloat.cpp', target = 'generate-toFloat.exe')
+    gc(rule = tableMaker, source = 'openexr/Half/eLut.cpp', target = 'generate-eLut.exe')
+    
+    tableUser = glob('**/half.cpp')[0]
+    gc(rule='${SRC} > toFloat.h', source='generate-toFloat.exe', target = tableUser)
+    gc(rule='${SRC} > eLut.h', source='generate-eLut.exe', target = tableUser)
+    
+    gc.stlib(
+        source = files,
+        includes = dirs,
+        defines = gc.env.COMMON_DEFS + ' NO_VIZ ZLIB_WINAPI',
+        cflags = ['-O3', '-w'],
+        cxxflags = ['-O3', '-w'],
+        target = 'ecosystem')
