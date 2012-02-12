@@ -1,4 +1,4 @@
-![Image test](http://github.com/prideout/pez/raw/master/logo.png)
+![Image test](http://github.com/prideout/pez/raw/master/converter/logo.png)
 
 Pez lets you create a simple, fixed-size window and render to it with OpenGL.  It's composed of a single header file and single C99 source file.
 
@@ -24,27 +24,29 @@ void pezFatal(const char* pStr, ...) |
 void pezCheck(int condition, ...)    |
 void pezPrintString(const char* pStr, ...) |
 
-Note that functions that *you* implement are prefixed with a capital `Pez`, whereas functions that *pez* implements are prefixed with a lowercase `pez`.
+Note that your job is to implement functions that are prefixed with a capital `Pez`, whereas functions that prefixed with a lowercase `pez` are alrady implemented for you.
 
-Pez simplements some OS-specific stuff for you:
+Pez implements some OS-specific stuff for you:
 
-    int pezIsPressing(char key)
     const char* pezOpenFileDialog()
     const char* pezGetDesktopFolder()
+    int pezIsPressing(char key)
 
 Pez never makes any OpenGL calls (that's up to you), but it provides a few helper functions to make it easy to load GLSL strings:
 
     const char* pezGetShader(const char* effectKey)
     int pezAddDirective(const char* token, const char* directive)
 
-And, some functions to make it easy to create vertex buffer objects:
+Take a look at [glsw](http://prideout.net/blog/?p=11) to see how the effect key maps to a filename.
+
+And, pez provides some functions to make it easy to create vertex buffer objects:
 
     PezVerts pezLoadVerts(const char* filename)
     PezVerts pezGenQuad(float left, float top, float right, float bottom)
     void pezFreeVerts(PezVerts verts)
     void pezSaveVerts(PezVerts verts, const char* filename)
 
-And, some functions to make it easy to create textures or pixel buffer objects:
+Likewise, here are some functions to help with textures or pixel buffer objects:
 
     PezPixels pezLoadPixels(const char* filename)
     void pezFreePixels(PezPixels pixels)
