@@ -6,20 +6,20 @@ It's intended for creating small demos on Linux.  If you're building a real appl
 
 Your OpenGL demo needs to implement a few functions:
 
-`PezConfig PezInitialize()`     | One-time setup, return a small struct with window size & title
-`void PezRender()`              | Do your drawing here!
-`void PezUpdate(float elapsedSeconds)` | Perform animation and physics
+    PezConfig PezInitialize()             // One-time setup, return a small struct with window size & title
+    void PezRender()                      // Do your drawing here!
+    void PezUpdate(float elapsedSeconds)  // Perform animation and physics
 
 You can also optionally implement the following handler functions, depending on which `#define` statements you've got enabled in the header file:
 
-`void PezHandleMouse(int x, int y, int action)` | Respond to a mouse click or move event
-`void PezReceiveDrop(const char* filename)`     | Respond to a file being drag-n-dropped to your window
+    void PezHandleMouse(int x, int y, int action) // Respond to a mouse click or move event
+    void PezReceiveDrop(const char* filename)     // Respond to a file being drag-n-dropped to your window
 
 Pez provides some utility functions to help make assertions with printf-style error messages:
 
-void pezFatal(const char* pStr, ...) |
-void pezCheck(int condition, ...)    |
-void pezPrintString(const char* pStr, ...) |
+    void pezFatal(const char* pStr, ...)
+    void pezCheck(int condition, ...)
+    void pezPrintString(const char* pStr, ...)
 
 Note that your job is to implement functions that are prefixed with a capital `Pez`, whereas functions that prefixed with a lowercase `pez` are already implemented for you.
 
